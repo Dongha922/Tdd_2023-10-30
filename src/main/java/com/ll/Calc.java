@@ -4,20 +4,17 @@ public class Calc {
     public static int run(String exp) {
         if (exp.isBlank()) return 0;
 
-        if (exp.contains("-")) {
+        final boolean isPlus =exp.contains("+");
 
-            String[] exps = exp.split(" \\- ");
-            int num1 = Integer.parseInt(exps[0]);
-            int num2 = Integer.parseInt(exps[1]);
-            return num1 - num2;
-        }
-        String[] expBits = exp.split(" \\+ ");
-        int num1 = Integer.parseInt(expBits[0]);
+        final String divideSign =isPlus ? "\\+":"-";
 
-        int num2 = Integer.parseInt(expBits[1]);
-        return num1+num2;
+        final String[] exps = exp.split(" "+divideSign+ " ");
 
+        final int num1 = Integer.parseInt(exps[0]);
+        final int num2 = Integer.parseInt(exps[1]);
 
+        if (isPlus) return num1+num2;
+        else return num1-num2;
     }
 
 
